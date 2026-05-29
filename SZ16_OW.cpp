@@ -18,13 +18,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// #include "rsc\resource.h"
+#include "rsc\resource.h"
 
 int main ( int argc, char *argv[] )
 {
 	if (argc != 2) 
 	{
-		printf("SuperZed External 16x16 Overworld Compiler\n\n    Usage: SZ16_OW.exe ROM.FILE\n\n    Requires all 160 'OW###.z16' files in the directory.\n\n    Writes 160 new OW###.z32 files and imports the new 32x32 blockset to the ROM\n\n    Run 'Edit->Import All Z32 Files' in SuperZed to import the new .z32 files\n");
+		printf("SuperZed External 16x16 Overworld Compiler v1.2\n\n    Usage: SZ16_OW.exe ROM.FILE\n\n    Requires all 160 'OW###.z16' files in the directory.\n\n    Writes 160 new OW###.z32 files and imports the new 32x32 blockset to the ROM\n\n    Run 'Edit->Import All Z32 Files' in SuperZed to import the new .z32 files\n");
 	}
     //  else
     {

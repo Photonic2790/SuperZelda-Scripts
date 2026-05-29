@@ -29,15 +29,16 @@ In HEX this is what leads into the actual tilemap:
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "rsc\resource.h"
+
 using namespace std;
 
 int main ( int argc, char *argv[] ) 
 {
-	cout << "TMX_to_Z16.exe\n\n    Converts tilemaps from Tiled .tmx UTF-8 to SuperZed .z16 format.\n";
 	if ( argc != 3 ) 
 	{ 
-		cout << "Proper Usage:\n";
-		cout << argv[0] << " 'MAP_NAME.TMX' 'MAP_NAME.Z16'\n"; 
+		cout << "TMX to Z16 Tilemap Conversion Utility v1.2\n\n    Converts tilemaps from Tiled .tmx UTF-8 to SuperZed .z16 format.\n\n";
+		cout << "Proper Usage:\n" << argv[0] << " 'MAP_NAME.TMX' 'MAP_NAME.Z16'\n"; 
 		cout << "eg: " << argv[0] <<" Lost_Woods_NW.tmx OW000.z16\n"; 
 		return 0;
 	}
@@ -77,7 +78,7 @@ int main ( int argc, char *argv[] )
 
 	short x16tile = 0x8000;
 	
-	while (foundCSV == 0 && hexAddress <= 0x200)
+	while (foundCSV == 0 && hexAddress <= 0x400)
 	{
 		// 22 63 73 76
 		// "  c  s  v;
@@ -101,7 +102,7 @@ int main ( int argc, char *argv[] )
 						byte[0] = fgetc ( tiledFile );
 						if (byte[0] == 0x22) // "
 						{
-							hexAddress += 6;
+							hexAddress += 7;
 							foundCSV = 1;
 						}	
 					}				
@@ -111,7 +112,7 @@ int main ( int argc, char *argv[] )
 		hexAddress += 0x01;
 	}
 
-	cout << "Tile Map Starting HEX Address: " << hexAddress << "\n";
+	// cout << "Tile Map Starting HEX Address: " << hexAddress << "\n";
 	
 /// Read from tmx UTF-8 encoded decimal --- WRITE TO -- x16buffer short (HEX) 1024 tiles, 2048 (0x800) bytes.
 	for (h = 0, j = 0; h < 1024; h++, j++)
@@ -206,7 +207,7 @@ int main ( int argc, char *argv[] )
 	fseek(Z16File,0,SEEK_END);
 	fclose( Z16File );
 
-	cout<<"Sucessfully converted " << argv[1] << " to " << argv[2] << "\n";
+	cout<<"        Sucessfully converted " << argv[1] << " to " << argv[2] << "\n";
 
     return 1;
 }

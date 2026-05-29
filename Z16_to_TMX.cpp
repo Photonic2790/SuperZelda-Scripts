@@ -40,7 +40,7 @@ int main ( int argc, char *argv[] )
 {
 	if ( argc != 3 ) 
 	{
-		cout << "Z16 to TMX Tilemap Conversion Utility v1.1\n\n    Converts tilemaps from SuperZed .z16 to Tiled .tmx UTF-8 format\n\n";
+		cout << "Z16 to TMX Tilemap Conversion Utility v1.2\n\n    Converts tilemaps from SuperZed .z16 to Tiled .tmx UTF-8 format\n\n";
 		cout << "Proper Usage:\n" << argv[0] << " 'MAP_NAME.Z16' 'MAP_NAME.TMX'\n"; 
 		cout << "eg: " << argv[0] <<" OW000.z16 Lost_Woods_NW.tmx\n"; 
 		return 0;
@@ -332,7 +332,7 @@ int main ( int argc, char *argv[] )
 /// Close the last file.
 	fclose ( tiledFile );
 
-	cout<<"        Sucessfully converted " << argv[1] << " to " << argv[2] << "\n";
+	cout<<"        Successfully converted " << argv[1] << " to " << argv[2] << "\n";
 
 	return 1; // Good Completion
 }
